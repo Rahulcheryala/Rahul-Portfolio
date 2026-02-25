@@ -1,11 +1,11 @@
-import Navbar from '@components/Navbar'
+import { Navbar, Welcome } from "@components";
 
 const Home = () => {
   return (
     <main>
       <Navbar />
 
-
+      <Welcome />
     </main>
   )
 }
