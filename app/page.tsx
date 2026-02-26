@@ -1,4 +1,4 @@
-import { Navbar, Welcome } from "@components";
+import { Dock, Navbar, Welcome } from "@components";
 
 const Home = () => {
   return (
@@ -6,8 +6,10 @@ const Home = () => {
       <Navbar />
 
       <Welcome />
-    </main>
-  )
-}
 
-export default Home
+      <Dock />
+    </main>
+  );
+};
+
+export default Home;
