@@ -37,21 +37,40 @@ const WindowWrapper = (
       if (!window) return;
 
       window.style.display = "block";
-      gsap.fromTo(
-        window,
-        {
-          scale: 0.8,
-          opacity: 0,
-          y: 80,
-        },
-        {
-          scale: 1,
-          opacity: 1,
+
+      const saved = preMaximizeRef.current;
+      if (saved) {
+        gsap.set(window, {
+          left: saved.left,
+          top: saved.top,
+          width: saved.width,
+          height: saved.height,
+          x: 0,
           y: 0,
-          duration: 0.4,
-          ease: "power3.out",
-        },
-      );
+        });
+        gsap.fromTo(
+          window,
+          { scale: 0.8, opacity: 0 },
+          {
+            scale: 1,
+            opacity: 1,
+            duration: 0.4,
+            ease: "power3.out",
+          },
+        );
+      } else {
+        gsap.fromTo(
+          window,
+          { scale: 0.8, opacity: 0, y: 80 },
+          {
+            scale: 1,
+            opacity: 1,
+            y: 0,
+            duration: 0.4,
+            ease: "power3.out",
+          },
+        );
+      }
     }, [isOpen]);
 
     useGSAP(() => {
@@ -108,8 +127,8 @@ const WindowWrapper = (
 
         gsap.to(window, {
           width: parent.offsetWidth,
-          height: parent.offsetHeight,
-          top: 0,
+          height: parent.offsetHeight - (40 + 89), // 40 is the spacing for the NAV and 89 is the spacing for the DOCK
+          top: 40,
           left: 0,
           x: 0,
           y: 0,
@@ -281,7 +300,13 @@ const WindowWrapper = (
     }, [isOpen]);
 
     return (
-      <section id={windowKey} ref={ref} style={{ zIndex }} className="absolute">
+      <section
+        id={windowKey}
+        ref={ref}
+        style={{ zIndex }}
+        className="absolute"
+        onMouseDown={() => focusWindow(windowKey)}
+      >
         <Component {...props} />
       </section>
     );

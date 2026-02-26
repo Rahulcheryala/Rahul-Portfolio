@@ -5,11 +5,17 @@ import { CheckIcon, Flag } from "lucide-react";
 import { techStack } from "@constants";
 import WindowWrapper from "@hoc/WindowWrapper";
 import { WindowControls } from "@components";
+import useWindowStore from "@store/window";
 
 const Terminal = () => {
+  const { maximizeWindow } = useWindowStore();
   return (
     <>
-      <div id="window-header" className="relative">
+      <div
+        id="window-header"
+        className="relative"
+        onDoubleClick={() => maximizeWindow("terminal")}
+      >
         <WindowControls target="terminal" />
         <h2>Tech Stack</h2>
       </div>

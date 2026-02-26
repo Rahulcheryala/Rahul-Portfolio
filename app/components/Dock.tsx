@@ -11,7 +11,8 @@ import useWindowStore, { type WindowEntry } from "@store/window";
 
 const Dock = () => {
   const dockRef = useRef<HTMLDivElement>(null);
-  const { openWindow, restoreMinimizedWindow, windows } = useWindowStore();
+  const { openWindow, focusWindow, restoreMinimizedWindow, windows } =
+    useWindowStore();
 
   useGSAP(() => {
     const dock = dockRef.current;
@@ -75,6 +76,11 @@ const Dock = () => {
 
     if (windowState.isOpen && (windowState as WindowEntry).isMinimized) {
       restoreMinimizedWindow(app.id as keyof typeof windows);
+    } else if (
+      windowState.isOpen &&
+      !(windowState as WindowEntry).isMinimized
+    ) {
+      focusWindow(app.id as keyof typeof windows);
     } else if (!windowState.isOpen) {
       openWindow(app.id as keyof typeof windows);
     }

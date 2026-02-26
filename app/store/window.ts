@@ -32,6 +32,7 @@ const useWindowStore = create<WindowState>()(
         if (!window) return;
 
         window.isOpen = true;
+        window.isMinimized = false;
         window.zIndex = state.nextZIndex;
         window.data = data ?? window.data;
         state.nextZIndex++;
@@ -70,6 +71,8 @@ const useWindowStore = create<WindowState>()(
         const window = state.windows[windowKey] as WindowEntry;
         if (!window) return;
 
+        window.zIndex = state.nextZIndex;
+        state.nextZIndex++;
         window.isMinimized = false;
       }),
 
