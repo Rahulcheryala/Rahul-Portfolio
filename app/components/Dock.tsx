@@ -2,13 +2,16 @@
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { dockApps } from "@constants";
 import Image from "next/image";
 import { useRef } from "react";
 import { Tooltip } from "react-tooltip";
 
+import { dockApps } from "@constants";
+import useWindowStore, { type WindowEntry } from "@store/window";
+
 const Dock = () => {
   const dockRef = useRef<HTMLDivElement>(null);
+  const { openWindow, restoreMinimizedWindow, windows } = useWindowStore();
 
   useGSAP(() => {
     const dock = dockRef.current;
@@ -60,7 +63,22 @@ const Dock = () => {
     };
   }, []);
 
-  const toggleApp = (app: (typeof dockApps)[number]) => {};
+  const toggleApp = (app: (typeof dockApps)[number]) => {
+    if (!app.canOpen) return;
+
+    const windowState = windows[app.id as keyof typeof windows];
+
+    if (!windowState) {
+      console.error(`Window ${app.id} not found`);
+      return;
+    }
+
+    if (windowState.isOpen && (windowState as WindowEntry).isMinimized) {
+      restoreMinimizedWindow(app.id as keyof typeof windows);
+    } else if (!windowState.isOpen) {
+      openWindow(app.id as keyof typeof windows);
+    }
+  };
 
   return (
     <section id="dock">
@@ -71,6 +89,7 @@ const Dock = () => {
               type="button"
               className="dock-icon"
               aria-label={app.name}
+              data-dock-app={app.id}
               data-tooltip-id="dock-tooltip"
               data-tooltip-content={app.name}
               data-tooltip-delay-show={150}
@@ -85,6 +104,9 @@ const Dock = () => {
                 unoptimized
                 className={`object-cover object-center ${app.canOpen ? "cursor-pointer" : "cursor-default opacity-60"}`}
               />
+              {windows[app.id as keyof typeof windows]?.isOpen && (
+                <span className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 bg-gray-300 rounded-full" />
+              )}
             </button>
           </div>
         ))}

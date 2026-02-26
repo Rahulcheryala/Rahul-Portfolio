@@ -33,7 +33,7 @@ body {
 
 @layer base {
   main {
-    @apply w-dvw h-dvh overflow-hidden;
+    @apply relative w-dvw h-dvh overflow-hidden;
   }
 
   nav {
@@ -99,18 +99,18 @@ body {
   }
 
   #window-controls {
-    @apply flex gap-2;
+    @apply flex gap-2 cursor-pointer absolute top-1/2 -translate-y-1/2 left-4 py-1;
 
     .close {
-      @apply size-3.5 rounded-full bg-[#ff6157] cursor-pointer;
+      @apply size-3.5 rounded-full bg-[#ff6157] flex justify-center items-center;
     }
 
     .minimize {
-      @apply size-3.5 rounded-full bg-[#ffc030];
+      @apply size-3.5 rounded-full bg-[#ffc030] flex justify-center items-center;
     }
 
     .maximize {
-      @apply size-3.5 rounded-full bg-[#2acb42];
+      @apply size-3.5 rounded-full bg-[#2acb42] flex justify-center items-center;
     }
   }
 
