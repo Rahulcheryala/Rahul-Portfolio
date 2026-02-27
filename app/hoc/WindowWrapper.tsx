@@ -4,6 +4,7 @@ import { gsap, Draggable } from "gsap/all";
 import type { Draggable as DraggableType } from "gsap/all";
 import { useGSAP } from "@gsap/react";
 import React, { useLayoutEffect, useRef } from "react";
+import clsx from "clsx";
 
 import { WINDOW_CONFIG } from "@constants";
 import useWindowStore, { WindowEntry } from "@store/window";
@@ -118,6 +119,13 @@ const WindowWrapper = (
         const rect = window.getBoundingClientRect();
         const parentRect = parent.getBoundingClientRect();
 
+        console.log(
+          "rect - before maximize",
+          rect.height,
+          window.offsetHeight,
+          parent.offsetHeight,
+        );
+
         preMaximizeRef.current = {
           width: rect.width,
           height: rect.height,
@@ -127,7 +135,7 @@ const WindowWrapper = (
 
         gsap.to(window, {
           width: parent.offsetWidth,
-          height: parent.offsetHeight - (40 + 89), // 40 is the spacing for the NAV and 89 is the spacing for the DOCK
+          height: parent.offsetHeight - (40 + 89), // 40 for NAV, 89 for DOCK
           top: 40,
           left: 0,
           x: 0,
@@ -141,6 +149,7 @@ const WindowWrapper = (
         });
       } else {
         const saved = preMaximizeRef.current;
+        console.log("saved - after maximize", saved?.height);
         instance?.enable();
 
         if (saved) {
@@ -304,7 +313,7 @@ const WindowWrapper = (
         id={windowKey}
         ref={ref}
         style={{ zIndex }}
-        className="absolute"
+        className={clsx("absolute", !isMaximized && `${windowKey}-window`)}
         onMouseDown={() => focusWindow(windowKey)}
       >
         <Component {...props} />

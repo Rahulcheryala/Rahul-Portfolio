@@ -354,29 +354,48 @@ body {
     }
   }
 
+  .txtfile-window {
+    max-height: calc(
+      70dvh + 45px
+    ); /* 45px is the height of the window-header */
+  }
+
   #txtfile {
     @apply w-md absolute top-36 right-32 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
 
     h2 {
-      @apply font-bold text-sm text-center w-full;
+      @apply font-bold text-sm text-center w-full select-none;
+    }
+
+    .txtfile-content {
+      @apply p-6 flex flex-col gap-4 font-roboto text-sm text-gray-700 leading-relaxed overflow-y-auto;
+    }
+
+    .txtfile-image {
+      @apply flex justify-center mb-2;
+    }
+
+    .txtfile-subtitle {
+      @apply text-base font-semibold text-gray-900 text-center;
+      font-family: var(--font-geist-sans);
+    }
+
+    .txtfile-line {
+      @apply text-gray-600 px-3 font-georama;
     }
   }
 
   #imgfile {
-    @apply w-xl absolute top-40 left-2/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply w-xl h-auto absolute top-40 left-2/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
 
     #window-header {
       p {
-        @apply font-bold text-[#5f6266];
+        @apply font-bold text-[#5f6266] text-center w-full;
       }
     }
 
     .preview {
-      @apply p-2 bg-gray-200 max-h-[70vh];
-
-      img {
-        @apply w-full h-fit object-contain object-center;
-      }
+      @apply p-2 bg-transparent flex-center;
     }
   }
 

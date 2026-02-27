@@ -1,6 +1,6 @@
 import { Dock, Navbar, Welcome } from "@components";
 import LazyResume from "@components/LazyResume";
-import { Terminal, Safari } from "@windows";
+import { Terminal, Safari, Finder, TxtFile, ImgFile, Contact } from "@windows";
 
 const Home = () => {
   return (
@@ -9,9 +9,13 @@ const Home = () => {
       <Welcome />
       <Dock />
 
-      <Terminal />
+      <Finder />
       <Safari />
+      <Terminal />
+      <TxtFile />
+      <ImgFile />
       <LazyResume />
+      <Contact />
     </main>
   );
 };

@@ -31,6 +31,8 @@ const useWindowStore = create<WindowState>()(
         const window = state.windows[windowKey] as WindowEntry;
         if (!window) return;
 
+        console.log(state.nextZIndex);
+
         window.isOpen = true;
         window.isMinimized = false;
         window.zIndex = state.nextZIndex;

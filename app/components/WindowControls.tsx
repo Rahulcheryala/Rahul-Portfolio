@@ -1,8 +1,16 @@
-import { WINDOW_CONFIG } from "@constants";
-import useWindowStore from "@store/window";
+import clsx from "clsx";
 import { ChevronsLeftRight, Minus, X } from "lucide-react";
 
-const WindowControls = ({ target }: { target: string }) => {
+import { WINDOW_CONFIG } from "@constants";
+import useWindowStore from "@store/window";
+
+const WindowControls = ({
+  target,
+  disableMaximize = false,
+}: {
+  target: string;
+  disableMaximize?: boolean;
+}) => {
   const { closeWindow, minimizeWindow, maximizeWindow } = useWindowStore();
 
   return (
@@ -30,8 +38,14 @@ const WindowControls = ({ target }: { target: string }) => {
         />
       </div>
       <div
-        className="maximize"
-        onClick={() => maximizeWindow(target as keyof typeof WINDOW_CONFIG)}
+        className={clsx(
+          "maximize",
+          disableMaximize && "bg-gray-300! cursor-not-allowed",
+        )}
+        onClick={() =>
+          !disableMaximize &&
+          maximizeWindow(target as keyof typeof WINDOW_CONFIG)
+        }
       >
         <span className="sr-only">Maximize</span>
         <ChevronsLeftRight
