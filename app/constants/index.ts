@@ -561,3 +561,26 @@ const WINDOW_CONFIG = {
 };
 
 export { INITIAL_Z_INDEX, WINDOW_CONFIG };
+
+const TERMINAL_CONFIG = {
+  name: "Rahul Cheryala",
+  ps1_username: "rahulcheryala",
+  ps1_hostname: "portfolio",
+  email: "rahulcheryala787@gmail.com",
+  repo: "https://github.com/rahulcheryala",
+  social: {
+    github: "rahulcheryala",
+    linkedin: "rahulcheryala",
+  },
+  sumfetch: {
+    OS: "Human/MacOS Tahoe",
+    Host: "FullStack-Developer-Body-v1.1",
+    Uptime: "1.5 years of professional grind",
+    Caffeine: "8 cups/day",
+    "Bugs Fixed": "726+ (and 6 features created by accident)",
+    "Prod Breaks": "4 (Everything is fine now)",
+    "PR Reviews": "LGTM 👍 (Didn't actually read it)",
+  },
+};
+
+export { TERMINAL_CONFIG };

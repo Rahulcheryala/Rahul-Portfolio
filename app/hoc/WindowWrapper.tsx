@@ -99,6 +99,7 @@ const WindowWrapper = (
         handle: header ?? undefined,
         onPress: () => focusWindow(windowKey),
         onDragEnd: updateSavedPosition,
+        cursor: "default",
       });
       draggableRef.current = instance;
 
