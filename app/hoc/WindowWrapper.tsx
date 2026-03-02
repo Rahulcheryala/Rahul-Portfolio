@@ -1,6 +1,7 @@
 "use client";
 
-import { gsap, Draggable } from "gsap/all";
+import gsap from "gsap";
+import { Draggable } from "gsap/all";
 import type { Draggable as DraggableType } from "gsap/all";
 import { useGSAP } from "@gsap/react";
 import React, { useLayoutEffect, useRef } from "react";
@@ -119,13 +120,6 @@ const WindowWrapper = (
         const rect = window.getBoundingClientRect();
         const parentRect = parent.getBoundingClientRect();
 
-        console.log(
-          "rect - before maximize",
-          rect.height,
-          window.offsetHeight,
-          parent.offsetHeight,
-        );
-
         preMaximizeRef.current = {
           width: rect.width,
           height: rect.height,
@@ -149,7 +143,6 @@ const WindowWrapper = (
         });
       } else {
         const saved = preMaximizeRef.current;
-        console.log("saved - after maximize", saved?.height);
         instance?.enable();
 
         if (saved) {
@@ -312,7 +305,7 @@ const WindowWrapper = (
       <section
         id={windowKey}
         ref={ref}
-        style={{ zIndex }}
+        style={{ zIndex, opacity: 0 }}
         className={clsx("absolute", !isMaximized && `${windowKey}-window`)}
         onMouseDown={() => focusWindow(windowKey)}
       >

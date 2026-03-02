@@ -1,12 +1,13 @@
-import { Dock, Navbar, Welcome } from "@components";
+import { Dock, Navbar, Welcome, Home } from "@components";
 import LazyResume from "@components/LazyResume";
 import { Terminal, Safari, Finder, TxtFile, ImgFile, Contact } from "@windows";
 
-const Home = () => {
+const App = () => {
   return (
     <main>
       <Navbar />
       <Welcome />
+      <Home />
       <Dock />
 
       <Finder />
@@ -20,4 +21,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default App;
