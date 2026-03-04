@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Georama, Roboto_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -48,7 +50,9 @@ export const metadata: Metadata = {
     "Rahul Cheryala software engineer",
     "Rahul Cheryala projects",
   ],
-  authors: [{ name: "Rahul Cheryala", url: "https://github.com/rahulcheryala" }],
+  authors: [
+    { name: "Rahul Cheryala", url: "https://github.com/rahulcheryala" },
+  ],
   creator: "Rahul Cheryala",
   applicationName: "Rahul Cheryala Portfolio",
   manifest: "/manifest.json",
@@ -67,13 +71,15 @@ export const metadata: Metadata = {
     url: "https://rahulcheryala.com",
     siteName: "Rahul Cheryala Portfolio",
     title: "Rahul Cheryala | Full-Stack Developer Portfolio",
-    description: "Rahul Cheryala's portfolio - Full-stack developer showcasing projects, skills, and experience.",
+    description:
+      "Rahul Cheryala's portfolio - Full-stack developer showcasing projects, skills, and experience.",
     images: ["/images/rahul.webp"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Rahul Cheryala | Full-Stack Developer Portfolio",
-    description: "Rahul Cheryala's portfolio - Full-stack developer showcasing projects, skills, and experience.",
+    description:
+      "Rahul Cheryala's portfolio - Full-stack developer showcasing projects, skills, and experience.",
     images: ["/images/rahul.webp"],
   },
   robots: {
@@ -119,6 +125,8 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${georama.variable} ${robotoMono.variable} antialiased`}
       >
         {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
