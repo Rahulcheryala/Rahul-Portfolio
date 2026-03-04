@@ -41,7 +41,7 @@ const Home = () => {
               height={0}
               width={0}
               sizes="100%"
-              className="w-14 h-14"
+              className="w-full h-full object-cover"
             />
             <p className="max-w-32 line-clamp-2 break-after-all">
               {project.name}

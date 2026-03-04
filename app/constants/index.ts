@@ -178,19 +178,19 @@ const photosLinks = [
 const gallery = [
   {
     id: 1,
-    img: "/images/project-1.png",
+    img: "/images/project-1.webp",
   },
   {
     id: 2,
-    img: "/images/project-2.png",
+    img: "/images/project-2.webp",
   },
   {
     id: 3,
-    img: "/images/project-3.png",
+    img: "/images/project-3.webp",
   },
   {
     id: 4,
-    img: "/images/project-4.png",
+    img: "/images/project-4.webp",
   },
 ];
 
@@ -251,7 +251,7 @@ const WORK_LOCATION = {
           kind: "file",
           fileType: "img",
           position: "top-52 right-80",
-          imageUrl: "/images/project-1.png",
+          imageUrl: "/images/project-1.webp",
         },
         {
           id: 5,
@@ -260,7 +260,7 @@ const WORK_LOCATION = {
           kind: "file",
           fileType: "img",
           position: "top-56 right-20",
-          imageUrl: "/images/project-2.png",
+          imageUrl: "/images/project-2.webp",
         },
       ],
     },
@@ -304,7 +304,7 @@ const WORK_LOCATION = {
           kind: "file",
           fileType: "img",
           position: "top-52 left-80",
-          imageUrl: "/images/project-3.png",
+          imageUrl: "/images/project-3.webp",
         },
         {
           id: 5,
@@ -312,7 +312,7 @@ const WORK_LOCATION = {
           icon: "/images/image.png",
           kind: "file",
           fileType: "img",
-          imageUrl: "/images/project-4.png",
+          imageUrl: "/images/project-4.webp",
           position: "top-60 left-5",
         },
       ],
@@ -387,7 +387,7 @@ const ABOUT_LOCATION = {
       kind: "file",
       fileType: "img",
       position: "top-10 left-5",
-      imageUrl: "/images/rahul.jpeg",
+      imageUrl: "/images/rahul.webp",
     },
     {
       id: 2,
@@ -396,7 +396,7 @@ const ABOUT_LOCATION = {
       kind: "file",
       fileType: "img",
       position: "top-28 right-72",
-      imageUrl: "/images/rahul-2.jpg",
+      imageUrl: "/images/rahul-2.webp",
     },
     {
       id: 3,
@@ -405,7 +405,7 @@ const ABOUT_LOCATION = {
       kind: "file",
       fileType: "img",
       position: "top-52 left-80",
-      imageUrl: "/images/rahul-3.jpeg",
+      imageUrl: "/images/rahul-3.webp",
     },
     {
       id: 4,
@@ -415,7 +415,7 @@ const ABOUT_LOCATION = {
       fileType: "txt",
       position: "top-60 left-5",
       subtitle: "Meet the Developer Behind the Code",
-      image: "/images/rahul.jpeg",
+      image: "/images/rahul.webp",
       description: [
         "Hi, I’m Rahul 👋 — a full-stack engineer who enjoys building things that actually work in production (and preferably stay that way 🚀).",
         "I graduated from IIT Dharwad with a background in Computer Science, and since then I’ve focused on turning ideas into reliable, scalable software. I’ve worked across frontend and backend systems, built CI/CD pipelines ⚙️, improved observability stacks 📊, and shipped features that real users depend on.",
@@ -459,7 +459,7 @@ const TRASH_LOCATION = {
       kind: "file",
       fileType: "img",
       position: "top-10 left-10",
-      imageUrl: "/images/trash-1.png",
+      imageUrl: "/images/trash-1.webp",
     },
     {
       id: 2,
@@ -468,7 +468,7 @@ const TRASH_LOCATION = {
       kind: "file",
       fileType: "img",
       position: "top-40 left-80",
-      imageUrl: "/images/trash-2.png",
+      imageUrl: "/images/trash-2.webp",
     },
   ],
 };

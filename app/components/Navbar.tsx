@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import dayjs from "dayjs";
 import Image from "next/image";
 
@@ -8,6 +9,14 @@ import useWindowStore from "@store/window";
 
 const Navbar = () => {
   const { openWindow } = useWindowStore();
+  const [time, setTime] = useState("");
+
+  useEffect(() => {
+    const tick = () => setTime(dayjs().format("ddd D MMM h:mm A"));
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, []);
   return (
     <nav>
       <div>
@@ -47,7 +56,7 @@ const Navbar = () => {
           ))}
         </ul>
 
-        <time>{dayjs().format("ddd D MMM h:mm A")}</time>
+        <time suppressHydrationWarning>{time}</time>
       </div>
     </nav>
   );

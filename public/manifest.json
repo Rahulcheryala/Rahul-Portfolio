@@ -1,0 +1,17 @@
+{
+  "name": "Rahul Cheryala - Portfolio",
+  "short_name": "Rahul Cheryala",
+  "description": "Rahul Cheryala's portfolio - Full-stack developer showcasing projects, skills, and experience.",
+  "icons": [
+    {
+      "src": "/macbook.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/"
+}

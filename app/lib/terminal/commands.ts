@@ -109,7 +109,7 @@ function cmd(
 
 const banner = cmd((): string => {
   return `
-<pre class="font-roboto text-amber-600 whitespace-pre text-xs sm:text-sm">
+<pre class="font-geist-mono text-amber-600 whitespace-pre text-sm sm:text-base">
 ██████╗  █████╗ ██╗  ██╗██╗   ██╗██╗
 ██╔══██╗██╔══██╗██║  ██║██║   ██║██║
 ██████╔╝███████║███████║██║   ██║██║
@@ -153,7 +153,7 @@ const sumfetch = cmd(async (): Promise<string> => {
   return `
 <div class="ml-6 flex flex-col gap-4">
   <div class="flex flex-wrap gap-10 items-start">
-    <pre class="font-roboto text-amber-600 whitespace-pre text-xs sm:text-sm">${computerEscaped}</pre>
+    <pre class="font-geist-mono text-amber-600 whitespace-pre text-sm sm:text-base">${computerEscaped}</pre>
     <div class="flex flex-col gap-2 font-roboto text-sm">
       <span class="text-amber-600 font-bold text-lg">${config.name}</span>
       <div class="flex flex-col gap-0.5 mt-2 text-gray-700">

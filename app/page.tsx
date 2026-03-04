@@ -1,5 +1,5 @@
 import { Dock, Navbar, Welcome, Home } from "@components";
-import LazyResume from "@components/LazyResume";
+import ConditionalResume from "@components/ConditionalResume";
 import {
   Terminal,
   Safari,
@@ -24,7 +24,7 @@ const App = () => {
       <Terminal />
       <TxtFile />
       <ImgFile />
-      <LazyResume />
+      <ConditionalResume />
       <Contact />
     </main>
   );

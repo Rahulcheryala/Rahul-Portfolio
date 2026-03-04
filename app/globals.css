@@ -1,13 +1,16 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
-
 @import "tailwindcss";
 
-html,
+html {
+  width: 100dvw;
+  overflow: hidden;
+  height: 100dvh;
+}
+
 body {
   width: 100dvw;
   overflow: hidden;
   height: 100dvh;
-  background-image: url("/images/wallpaper.png");
+  background-image: url("/images/wallpaper.webp");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
