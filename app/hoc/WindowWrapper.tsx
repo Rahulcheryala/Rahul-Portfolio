@@ -10,17 +10,23 @@ import clsx from "clsx";
 import { WINDOW_CONFIG } from "@constants";
 import useWindowStore, { WindowEntry } from "@store/window";
 
+type WindowWrapperOptions = {
+  /** When true, clears saved dimensions when window data changes (e.g. opening a different image in imgfile) */
+  resetDimensionsOnDataChange?: boolean;
+};
+
 const WindowWrapper = (
   Component: React.ComponentType<any>,
   windowKey: keyof typeof WINDOW_CONFIG,
+  options?: WindowWrapperOptions,
 ) => {
   const WrapperComponent = (props: any) => {
     const { focusWindow, windows } = useWindowStore();
-    const { isOpen, isMaximized, isMinimized, zIndex } = windows[
-      windowKey
-    ] as WindowEntry;
+    const windowEntry = windows[windowKey] as WindowEntry;
+    const { isOpen, isMaximized, isMinimized, zIndex, data } = windowEntry;
     const ref = useRef<HTMLDivElement>(null);
     const draggableRef = useRef<DraggableType | null>(null);
+    const lastDataRef = useRef<unknown>(undefined);
     const preMaximizeRef = useRef<{
       width: number;
       height: number;
@@ -33,6 +39,17 @@ const WindowWrapper = (
       top: number;
       left: number;
     } | null>(null);
+
+    useLayoutEffect(() => {
+      if (
+        options?.resetDimensionsOnDataChange &&
+        isOpen &&
+        data !== lastDataRef.current
+      ) {
+        preMaximizeRef.current = null;
+        lastDataRef.current = data;
+      }
+    }, [isOpen, data, options?.resetDimensionsOnDataChange]);
 
     useGSAP(() => {
       const window = ref.current;
@@ -61,6 +78,9 @@ const WindowWrapper = (
           },
         );
       } else {
+        gsap.set(window, {
+          clearProps: "width,height",
+        });
         gsap.fromTo(
           window,
           { scale: 0.8, opacity: 0, y: 80 },

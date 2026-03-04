@@ -1,6 +1,14 @@
 import { Dock, Navbar, Welcome, Home } from "@components";
 import LazyResume from "@components/LazyResume";
-import { Terminal, Safari, Finder, TxtFile, ImgFile, Contact } from "@windows";
+import {
+  Terminal,
+  Safari,
+  Finder,
+  TxtFile,
+  ImgFile,
+  Contact,
+  Photos,
+} from "@windows";
 
 const App = () => {
   return (
@@ -12,6 +20,7 @@ const App = () => {
 
       <Finder />
       <Safari />
+      <Photos />
       <Terminal />
       <TxtFile />
       <ImgFile />

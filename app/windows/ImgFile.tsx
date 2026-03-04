@@ -20,18 +20,17 @@ const ImgFile = () => {
     <>
       <div id="window-header" className="relative">
         <WindowControls target="imgfile" disableMaximize />
-        <p className="text-center">{imgData?.name ?? "image.png"}</p>
+        <h2>{imgData?.name ?? "image.png"}</h2>
       </div>
 
-      <div className="preview h-fit">
+      <div className="imgfile-content max-h-fit">
         {imgData?.imageUrl && (
           <Image
             src={imgData.imageUrl}
             alt={imgData.name ?? "image"}
-            width={0}
-            height={0}
-            sizes="100%"
-            className="w-full h-auto max-h-[75vh] object-contain object-center rounded-sm"
+            width={800}
+            height={600}
+            className="max-w-full max-h-full w-auto h-auto object-contain object-center rounded-sm"
           />
         )}
       </div>
@@ -39,6 +38,8 @@ const ImgFile = () => {
   );
 };
 
-const ImgFileWindow = WindowWrapper(ImgFile, "imgfile");
+const ImgFileWindow = WindowWrapper(ImgFile, "imgfile", {
+  resetDimensionsOnDataChange: true,
+});
 
 export default ImgFileWindow;

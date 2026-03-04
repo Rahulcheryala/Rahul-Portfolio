@@ -17,7 +17,7 @@ const Contact = () => {
 
       <div className="p-5 space-y-5">
         <Image
-          src="/images/adrian.jpg"
+          src="/images/rahul.jpeg"
           alt="Adrian"
           width={120}
           height={120}

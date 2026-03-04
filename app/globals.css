@@ -242,10 +242,11 @@ body {
   }
 
   #photos {
-    @apply max-w-3xl absolute top-96 left-1/2 -translate-y-1/2 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply absolute min-w-3xl top-50 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden min-h-0;
 
     .sidebar {
-      @apply w-3/12 flex-none bg-gray-50 border-r border-gray-200 flex flex-col p-5;
+      @apply flex-none bg-gray-50 border-r border-gray-200 flex flex-col p-5;
+      /* min-width: 96px; */
 
       h2 {
         @apply text-xs font-medium text-gray-400 mb-1;
@@ -274,7 +275,7 @@ body {
       @apply p-5;
 
       ul {
-        @apply grid grid-cols-5 grid-rows-5 gap-2.5;
+        @apply grid grid-cols-7 grid-rows-6 gap-2.5;
 
         li {
           img {
@@ -282,19 +283,19 @@ body {
           }
 
           &:first-child {
-            @apply row-start-1 row-span-3 col-start-1 col-span-3;
+            @apply row-start-1 row-span-3 col-start-1 col-span-4;
           }
 
           &:nth-child(2) {
-            @apply row-start-1 row-span-3 col-start-4 col-span-2;
+            @apply row-start-1 row-span-3 col-start-5 col-span-3;
           }
 
           &:nth-child(3) {
-            @apply row-start-4 row-span-2 col-start-3 col-span-3;
+            @apply row-start-4 row-span-3 col-start-1 col-span-3;
           }
 
           &:last-child {
-            @apply row-start-4 row-span-2 col-start-1 col-span-2;
+            @apply row-start-4 row-span-3 col-start-4 col-span-4;
           }
         }
       }
@@ -305,7 +306,7 @@ body {
     @apply absolute top-12 right-80 bg-white shadow-2xl drop-shadow-2xl rounded-xl;
 
     .resume-content {
-      @apply max-h-[calc(100%-48px)] flex items-start justify-center rounded-xl overflow-hidden;
+      @apply max-h-[calc(100%-48px)] flex items-start justify-center rounded-xl overflow-auto;
     }
 
     #window-header {
@@ -394,13 +395,13 @@ body {
     @apply w-xl h-auto absolute top-40 left-2/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
 
     #window-header {
-      p {
-        @apply font-bold text-[#5f6266] text-center w-full;
+      h2 {
+        @apply font-bold text-sm text-center w-full select-none text-[#5f6266];
       }
     }
 
-    .preview {
-      @apply p-2 bg-transparent flex-center;
+    .imgfile-content {
+      @apply min-h-[300px] overflow-hidden flex items-center justify-center p-2;
     }
   }
 

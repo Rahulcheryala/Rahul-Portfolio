@@ -26,7 +26,13 @@ const Finder = () => {
               item.id === activeLocation.id ? "active" : "not-active",
             )}
           >
-            <Image src={item.icon} alt={item.name} width={16} height={16} />
+            <Image
+              src={item.icon}
+              alt={item.name}
+              width={16}
+              height={16}
+              unoptimized
+            />
             <p className="test-sm font-medium truncate">{item.name}</p>
           </li>
         ))}
@@ -71,7 +77,13 @@ const Finder = () => {
               className={item.position}
               onDoubleClick={() => openItem(item)}
             >
-              <Image src={item.icon} alt={item.name} width={16} height={16} />
+              <Image
+                src={item.icon}
+                alt={item.name}
+                width={16}
+                height={16}
+                unoptimized
+              />
               <p>{item.name}</p>
             </li>
           ))}
