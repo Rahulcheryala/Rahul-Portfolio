@@ -58,12 +58,12 @@ const Finder = () => {
         onDoubleClick={() => maximizeWindow("finder")}
       >
         <WindowControls target="finder" />
-        <span className="ms-auto p-1.5 rounded-full bg-white hover:bg-gray-100 cursor-pointer shadow-md">
-          <Search size={16} />
+        <span className="ms-auto p-1.5 rounded-full bg-white dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 cursor-pointer shadow-md">
+          <Search size={16} className="dark:text-gray-200" />
         </span>
       </div>
 
-      <div className="bg-white flex h-full">
+      <div className="bg-white dark:bg-gray-900 flex h-full">
         <div className="sidebar select-none">
           {renderList("Favorites", Object.values(locations))}
 

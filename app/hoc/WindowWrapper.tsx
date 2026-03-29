@@ -327,7 +327,7 @@ const WindowWrapper = (
         id={windowKey}
         ref={ref}
         style={{ zIndex, opacity: 0 }}
-        className={clsx("absolute", !isMaximized && `${windowKey}-window`)}
+        className={clsx("absolute border border-transparent dark:border-gray-700 rounded-xl", !isMaximized && `${windowKey}-window`)}
         onMouseDown={() => focusWindow(windowKey)}
       >
         <Component {...props} />

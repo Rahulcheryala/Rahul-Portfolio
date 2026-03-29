@@ -24,12 +24,12 @@ const Contact = () => {
           className="rounded-full shadow"
         />
 
-        <h3>Let's talk</h3>
-        <p>
-          I'm always looking for new opportunities and collaborations. Feel free
+        <h3 className="dark:text-gray-100">Let&apos;s talk</h3>
+        <p className="dark:text-gray-300">
+          I&apos;m always looking for new opportunities and collaborations. Feel free
           to reach out to me.
         </p>
-        <p className="text-sm text-gray-500 font-roboto">
+        <p className="text-sm text-gray-500 dark:text-gray-400 font-roboto">
           rahulcheryala787@gmail.com
         </p>
 

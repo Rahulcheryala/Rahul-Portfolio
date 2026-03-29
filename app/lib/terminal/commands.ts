@@ -125,7 +125,7 @@ Type <span class="text-amber-600">help</span> for commands. Type <span class="te
 const help = cmd(async (): Promise<string> => {
   const entries = LISTED_COMMANDS.filter((c) => c !== "banner").map(
     (name) =>
-      `<span class="text-amber-600">${name}</span><span class="text-gray-600">${COMMAND_DESCRIPTIONS[name] ?? ""}</span>`,
+      `<span class="text-amber-600">${name}</span><span class="text-gray-600 dark:text-gray-400">${COMMAND_DESCRIPTIONS[name] ?? ""}</span>`,
   );
   const half = Math.ceil(entries.length / 2);
   const rows = entries.slice(0, half).map((left, i) => {
@@ -133,13 +133,13 @@ const help = cmd(async (): Promise<string> => {
     return `<span class="help-cmd-cell">${left}</span>${right ? `<span class="help-cmd-cell">${right}</span>` : ""}`;
   });
 
-  return `<span class="text-gray-800">Welcome! Available commands:</span>
+  return `<span class="text-gray-800 dark:text-gray-200">Welcome! Available commands:</span>
 
 <div class="help-commands-grid">
 ${rows.join("\n")}
 </div>
 
-<span class="text-gray-600">[tab]</span> completion  <span class="text-gray-600">[ctrl+l]</span>/<span class="text-amber-600">clear</span> clear terminal
+<span class="text-gray-600 dark:text-gray-400">[tab]</span> completion  <span class="text-gray-600 dark:text-gray-400">[ctrl+l]</span>/<span class="text-amber-600">clear</span> clear terminal
 
 Type <span class="text-amber-600">sumfetch</span> for summary.`;
 });
@@ -156,14 +156,14 @@ const sumfetch = cmd(async (): Promise<string> => {
     <pre class="font-geist-mono text-amber-600 whitespace-pre text-sm sm:text-base">${computerEscaped}</pre>
     <div class="flex flex-col gap-2 font-roboto text-sm">
       <span class="text-amber-600 font-bold text-lg">${config.name}</span>
-      <div class="flex flex-col gap-0.5 mt-2 text-gray-700">
+      <div class="flex flex-col gap-0.5 mt-2 text-gray-700 dark:text-gray-300">
         ${statsEntries.join("\n        ")}
       </div>
-      <span class="text-gray-600 mt-2">Type <span class="text-amber-600">resume</span> to open resume</span>
-      <div class="flex flex-col gap-y-3 text-sm text-gray-600 pt-2">
-        <a class="text-blue-600 hover:underline" href="mailto:${config.email}" target="_blank" rel="noopener noreferrer">${config.email}</a>
-        <a class="text-blue-600 hover:underline" href="${config.repo}" target="_blank" rel="noopener noreferrer">github/${config.social.github}</a>
-        <a class="text-blue-600 hover:underline" href="https://linkedin.com/in/${config.social.linkedin}" target="_blank" rel="noopener noreferrer">linkedin/${config.social.linkedin}</a>
+      <span class="text-gray-600 dark:text-gray-400 mt-2">Type <span class="text-amber-600">resume</span> to open resume</span>
+      <div class="flex flex-col gap-y-3 text-sm text-gray-600 dark:text-gray-400 pt-2">
+        <a class="text-blue-600 dark:text-blue-400 hover:underline" href="mailto:${config.email}" target="_blank" rel="noopener noreferrer">${config.email}</a>
+        <a class="text-blue-600 dark:text-blue-400 hover:underline" href="${config.repo}" target="_blank" rel="noopener noreferrer">github/${config.social.github}</a>
+        <a class="text-blue-600 dark:text-blue-400 hover:underline" href="https://linkedin.com/in/${config.social.linkedin}" target="_blank" rel="noopener noreferrer">linkedin/${config.social.linkedin}</a>
       </div>
     </div>
   </div>
@@ -172,7 +172,7 @@ const sumfetch = cmd(async (): Promise<string> => {
 });
 
 const about = cmd(async (): Promise<string> => {
-  return `<span class="text-gray-800">Hi, I am ${config.name}.</span>
+  return `<span class="text-gray-800 dark:text-gray-200">Hi, I am ${config.name}.</span>
 
 Full-stack engineer who enjoys turning caffeine and vague product ideas into scalable software.
 Curious by nature, slightly obsessed with clean systems, and happiest when things don&apos;t break in production.
@@ -187,16 +187,16 @@ const skills = cmd(async (): Promise<string> => {
   const contentRows = techStack
     .map(
       ({ category, items }) =>
-        `<div class="skills-row flex gap-4 items-start"><span class="text-green-600 w-32">✓ ${category}</span><span class="text-gray-700">${items.join(", ")}</span></div>`,
+        `<div class="skills-row flex gap-4 items-start"><span class="text-green-600 w-32">✓ ${category}</span><span class="text-gray-700 dark:text-gray-300">${items.join(", ")}</span></div>`,
     )
     .join("");
   const renderMs =
     typeof performance !== "undefined"
       ? Math.round(performance.now() - start)
       : 0;
-  const footnote = `<div class="skills-footnote flex flex-wrap gap-4 text-sm text-gray-600"><span>✓ ${techStack.length} of ${techStack.length} loaded successfully (100%)</span><span class="text-gray-800">Render time: ${renderMs}ms</span></div>`;
+  const footnote = `<div class="skills-footnote flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-400"><span>✓ ${techStack.length} of ${techStack.length} loaded successfully (100%)</span><span class="text-gray-800 dark:text-gray-200">Render time: ${renderMs}ms</span></div>`;
 
-  return `<span class="text-gray-800 font-bold">@${config.ps1_username} %</span> <span class="text-gray-700">show tech stack</span>
+  return `<span class="text-gray-800 dark:text-gray-200 font-bold">@${config.ps1_username} %</span> <span class="text-gray-700 dark:text-gray-300">show tech stack</span>
 
 ${labelRow}
 ${contentRows}
@@ -209,24 +209,24 @@ const resume = cmd(async (): Promise<string> => {
   if (typeof window !== "undefined") {
     useWindowStore.getState().openWindow("resume");
   }
-  return '<span class="text-gray-800">Opening resume window...</span>';
+  return '<span class="text-gray-800 dark:text-gray-200">Opening resume window...</span>';
 });
 
 const email = cmd(async (): Promise<string> => {
   if (typeof window !== "undefined") window.open(`mailto:${config.email}`);
-  return `Opening mailto:<span class="text-blue-600">${config.email}</span>...`;
+  return `Opening mailto:<span class="text-blue-600 dark:text-blue-400">${config.email}</span>...`;
 });
 
 const github = cmd(async (): Promise<string> => {
   if (typeof window !== "undefined")
     window.open(`https://github.com/${config.social.github}/`);
-  return '<span class="text-gray-800">Opening github...</span>';
+  return '<span class="text-gray-800 dark:text-gray-200">Opening github...</span>';
 });
 
 const linkedin = cmd(async (): Promise<string> => {
   if (typeof window !== "undefined")
     window.open(`https://www.linkedin.com/in/${config.social.linkedin}/`);
-  return '<span class="text-gray-800">Opening linkedin...</span>';
+  return '<span class="text-gray-800 dark:text-gray-200">Opening linkedin...</span>';
 });
 
 const exit = cmd(async (): Promise<string> => {
@@ -236,7 +236,7 @@ const exit = cmd(async (): Promise<string> => {
       useWindowStore.getState().closeWindow("terminal");
     }, 100);
   }
-  return '<span class="text-gray-600">Closing terminal...</span>';
+  return '<span class="text-gray-600 dark:text-gray-400">Closing terminal...</span>';
 });
 
 // --- Utilities ---
@@ -249,19 +249,19 @@ const date = cmd(async (): Promise<string> => new Date().toString());
 
 const vi = cmd(
   async (): Promise<string> =>
-    "<span class=\"text-gray-600\">woah, you still use 'vi'? just try 'vim'.</span>",
+    "<span class=\"text-gray-600 dark:text-gray-400\">woah, you still use 'vi'? just try 'vim'.</span>",
 );
 const vim = cmd(
   async (): Promise<string> =>
-    "<span class=\"text-gray-600\">'vim' is so outdated. how about 'nvim'?</span>",
+    "<span class=\"text-gray-600 dark:text-gray-400\">'vim' is so outdated. how about 'nvim'?</span>",
 );
 const nvim = cmd(
   async (): Promise<string> =>
-    "<span class=\"text-gray-600\">'nvim'? too fancy. why not 'emacs'?</span>",
+    "<span class=\"text-gray-600 dark:text-gray-400\">'nvim'? too fancy. why not 'emacs'?</span>",
 );
 const emacs = cmd(
   async (): Promise<string> =>
-    '<span class="text-gray-600">you know what? just use vscode.</span>',
+    '<span class="text-gray-600 dark:text-gray-400">you know what? just use vscode.</span>',
 );
 
 // --- API-backed ---
@@ -271,7 +271,7 @@ const quote = cmd(async (): Promise<string> => getQuote());
 const weather = cmd(async (args: string[]): Promise<string> => {
   const city = args.join(" ");
   if (!city)
-    return '<span class="text-amber-600">Usage:</span> weather [city]. <span class="text-gray-600">Example: weather london</span>';
+    return '<span class="text-amber-600">Usage:</span> weather [city]. <span class="text-gray-600 dark:text-gray-400">Example: weather london</span>';
   return getWeather(city);
 });
 
@@ -294,7 +294,7 @@ const party = cmd(async (): Promise<string> => {
 });
 
 const beer = cmd(async (): Promise<string> => {
-  return '<span class="text-gray-600">Nope i don\'t drink</span>';
+  return '<span class="text-gray-600 dark:text-gray-400">Nope i don\'t drink</span>';
 });
 
 // ─── Command Registry ─────────────────────────────────────────────────────────
@@ -374,7 +374,7 @@ export async function executeCommand(
   if (!executor) {
     onOutput(
       trimmed,
-      `<span class="text-red-600">shell: command not found: ${cmdName}</span>. Try <span class="text-amber-600">help</span>`,
+      `<span class="text-red-600 dark:text-red-400">shell: command not found: ${cmdName}</span>. Try <span class="text-amber-600">help</span>`,
     );
     onCommandClear();
     return;
@@ -389,7 +389,7 @@ export async function executeCommand(
   } catch (err) {
     onOutput(
       trimmed,
-      `<span class="text-red-600">Error:</span> ${err instanceof Error ? err.message : String(err)}`,
+      `<span class="text-red-600 dark:text-red-400">Error:</span> ${err instanceof Error ? err.message : String(err)}`,
     );
   } finally {
     if (isApi) onExecuting?.(false);

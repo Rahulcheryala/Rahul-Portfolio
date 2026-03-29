@@ -23,7 +23,7 @@ const Photos = () => {
       >
         <WindowControls target="photos" />
 
-        <div className="w-full flex justify-end items-center gap-3 text-gray-500">
+        <div className="w-full flex justify-end items-center gap-3 text-gray-500 dark:text-gray-400">
           <Mail className="icon" />
           <Search className="icon" />
         </div>
@@ -38,7 +38,7 @@ const Photos = () => {
         >
           <h2>Photos</h2>
 
-          <ul>
+          <ul className="space-y-1.5">
             {photosLinks.map(({ id, icon, title }) => (
               <li
                 key={id}
@@ -49,8 +49,9 @@ const Photos = () => {
                   (e.key === "Enter" || e.key === " ") && setActiveLinkId(id)
                 }
                 className={clsx(
-                  "hover:bg-gray-100",
-                  activeLinkId === id && "bg-blue-100 text-blue-700",
+                  "hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center",
+                  activeLinkId === id &&
+                    "bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300",
                 )}
               >
                 <Image src={icon} alt={title} width={16} height={16} />
@@ -95,7 +96,7 @@ const Photos = () => {
                   alt={`Gallery image ${id}`}
                   width={0}
                   height={0}
-                  className="object-fit rounded-lg"
+                  className="object-fit rounded-lg border dark:border-gray-700 border-transparent"
                   unoptimized
                 />
               </li>

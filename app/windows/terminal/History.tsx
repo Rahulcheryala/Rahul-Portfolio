@@ -12,12 +12,12 @@ export const History = ({ history }: HistoryProps) => (
             <div className="shrink-0">
               <Prompt />
             </div>
-            <span className="text-gray-800">{entry.command}</span>
+            <span className="text-gray-800 dark:text-gray-200">{entry.command}</span>
           </div>
         )}
         {entry.output && (
           <div
-            className="whitespace-pre-wrap text-gray-700 leading-relaxed [&_a]:text-blue-600 [&_a]:underline"
+            className="whitespace-pre-wrap text-gray-700 dark:text-gray-300 leading-relaxed [&_a]:text-blue-600 dark:[&_a]:text-blue-400 [&_a]:underline"
             style={{ lineHeight: 1.5 }}
             dangerouslySetInnerHTML={{ __html: entry.output }}
           />

@@ -6,6 +6,15 @@ import { MetallicPaint } from "@components/react-bits";
 const LoadingScreen = ({ children }: { children: ReactNode }) => {
   const [loading, setLoading] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
+  const [isDark, setIsDark] = useState(true);
+
+  useEffect(() => {
+    const stored = localStorage.getItem("theme");
+    const prefersDark =
+      stored === "dark" ||
+      (!stored && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    setIsDark(prefersDark);
+  }, []);
 
   useEffect(() => {
     let minTimePassed = false;
@@ -47,9 +56,9 @@ const LoadingScreen = ({ children }: { children: ReactNode }) => {
     <>
       {loading && (
         <div
-          className={`fixed inset-0 z-9999 flex items-center justify-center bg-black transition-opacity duration-700 ${
-            fadeOut ? "opacity-0" : "opacity-100"
-          }`}
+          className={`fixed inset-0 z-9999 flex items-center justify-center transition-opacity duration-700 ${
+            isDark ? "bg-black" : "bg-white"
+          } ${fadeOut ? "opacity-0" : "opacity-100"}`}
           onTransitionEnd={handleTransitionEnd}
         >
           <div className="h-64 w-64 sm:h-80 sm:w-80">
@@ -58,12 +67,12 @@ const LoadingScreen = ({ children }: { children: ReactNode }) => {
               speed={0.4}
               scale={3}
               liquid={0.8}
-              brightness={2}
+              brightness={isDark ? 2 : 1.5}
               contrast={0.6}
               fresnel={1.2}
-              lightColor="#ffffff"
-              darkColor="#111111"
-              tintColor="#feb3ff"
+              lightColor={isDark ? "#ffffff" : "#333333"}
+              darkColor={isDark ? "#111111" : "#e0e0e0"}
+              tintColor={isDark ? "#feb3ff" : "#a78bfa"}
             />
           </div>
         </div>

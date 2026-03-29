@@ -23,14 +23,14 @@ const ImgFile = () => {
         <h2>{imgData?.name ?? "image.png"}</h2>
       </div>
 
-      <div className="imgfile-content max-h-fit">
+      <div className="imgfile-content max-h-fit bg-white dark:bg-gray-900">
         {imgData?.imageUrl && (
           <Image
             src={imgData.imageUrl}
             alt={imgData.name ?? "image"}
             width={800}
             height={600}
-            className="max-w-full max-h-full w-auto h-auto object-contain object-center rounded-sm"
+            className="max-w-full max-h-full w-auto h-auto object-contain object-center rounded-sm dark:outline-gray-700 outline-gray-300"
           />
         )}
       </div>

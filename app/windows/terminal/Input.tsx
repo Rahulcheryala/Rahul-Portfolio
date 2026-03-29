@@ -105,7 +105,7 @@ export const Input = ({ inputRef, containerRef }: InputProps) => {
       {tabSuggestions && tabSuggestions.length > 0 && (
         <div className="flex gap-2 items-baseline mb-1">
           <div className="shrink-0 w-0" aria-hidden />
-          <span className="font-roboto text-sm text-gray-500">
+          <span className="font-roboto text-sm text-gray-500 dark:text-gray-400">
             {tabSuggestions.join("  ")}
           </span>
         </div>
@@ -121,7 +121,7 @@ export const Input = ({ inputRef, containerRef }: InputProps) => {
             ref={inputRef}
             type="text"
             size={Math.max(0, (command?.length ?? 0) + 0)}
-            className="terminal-input bg-transparent font-roboto text-sm text-gray-700 caret-amber-500 focus:outline-none"
+            className="terminal-input bg-transparent font-roboto text-sm text-gray-700 dark:text-gray-300 caret-amber-500 focus:outline-none"
             value={command}
             onChange={(e) => setCommand(e.target.value)}
             onKeyDown={onKeyDown}
@@ -130,7 +130,7 @@ export const Input = ({ inputRef, containerRef }: InputProps) => {
           />
           {suggestion && (
             <span
-              className="font-roboto text-sm text-gray-400 opacity-60 -ms-1"
+              className="font-roboto text-sm text-gray-400 dark:text-gray-500 opacity-60 -ms-1"
               aria-hidden
             >
               {suggestion}
