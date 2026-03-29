@@ -192,6 +192,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="preload" href="/apple-logo.svg" as="image" type="image/svg+xml" />
         <link rel="preload" href="/images/wallpaper.webp" as="image" />
         <script
           type="application/ld+json"

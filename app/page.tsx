@@ -1,5 +1,6 @@
 import { Dock, Navbar, Welcome, Home } from "@components";
 import ConditionalResume from "@components/ConditionalResume";
+import LoadingScreen from "@components/LoadingScreen";
 import {
   Terminal,
   Safari,
@@ -12,21 +13,23 @@ import {
 
 const App = () => {
   return (
-    <main>
-      <Navbar />
-      <Welcome />
-      <Home />
-      <Dock />
+    <LoadingScreen>
+      <main>
+        <Navbar />
+        <Welcome />
+        <Home />
+        <Dock />
 
-      <Finder />
-      <Safari />
-      <Photos />
-      <Terminal />
-      <TxtFile />
-      <ImgFile />
-      <ConditionalResume />
-      <Contact />
-    </main>
+        <Finder />
+        <Safari />
+        <Photos />
+        <Terminal />
+        <TxtFile />
+        <ImgFile />
+        <ConditionalResume />
+        <Contact />
+      </main>
+    </LoadingScreen>
   );
 };
 
