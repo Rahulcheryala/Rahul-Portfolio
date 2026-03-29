@@ -417,6 +417,66 @@ body {
     }
   }
 
+  #spotlight-overlay {
+    @apply fixed inset-0 z-9999 flex items-start justify-center pt-[18vh] bg-black/20 dark:bg-black/40;
+  }
+
+  #spotlight {
+    @apply flex flex-col gap-0 w-full max-w-[580px] rounded-2xl bg-gray-200/60 dark:bg-gray-800/60 backdrop-blur-3xl shadow-[0_20px_60px_rgba(0,0,0,0.3)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.6)] border border-white/30 dark:border-white/10 overflow-hidden;
+
+    .spotlight-search {
+      @apply w-full flex justify-start items-center gap-3 px-4 py-3 border-b border-white/30 dark:border-white/10;
+
+      svg {
+        @apply text-gray-500 dark:text-gray-400 shrink-0;
+      }
+
+      input {
+        @apply flex-1 bg-transparent text-xl font-light text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none;
+      }
+
+      .spotlight-match-icon {
+        @apply rounded-lg shrink-0;
+      }
+    }
+
+    .spotlight-results {
+      @apply w-full flex flex-col gap-1 px-3 py-2.5 overflow-x-auto scrollbar-hide;
+    }
+
+    .spotlight-item {
+      @apply w-full flex items-center gap-3 px-4 py-2.5 rounded-lg shrink-0 min-w-[80px] cursor-default transition-colors;
+
+      &.active {
+        @apply bg-blue-500;
+
+        span {
+          @apply text-white;
+        }
+      }
+
+      &:not(.active) {
+        @apply bg-transparent hover:bg-white/20 dark:hover:bg-white/5;
+
+        span {
+          @apply text-gray-800 dark:text-gray-200;
+        }
+      }
+
+      img {
+        @apply rounded-xl shrink-0;
+      }
+
+      span {
+        @apply font-medium leading-tight text-center;
+      }
+    }
+
+    .spotlight-empty {
+      @apply px-5 py-6 text-center text-sm text-gray-500 dark:text-gray-400;
+    }
+  }
+
   #home {
     @apply relative z-0 max-sm:hidden;
 
