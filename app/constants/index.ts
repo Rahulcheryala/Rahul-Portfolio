@@ -552,7 +552,7 @@ const TERMINAL_CONFIG = {
     Host: "FullStack-Developer-Body-v1.1",
     Uptime: "1.5 years of professional grind",
     Caffeine: "8 cups/day",
-    "Bugs Fixed": "348+ (and 4 features created by accident)",
+    "Bugs Fixed": "174+ (3 features created by accident)",
     "Prod Breaks": "4 (Everything is fine now)",
     "PR Reviews": "LGTM 👍 (Didn't actually read it)",
   },

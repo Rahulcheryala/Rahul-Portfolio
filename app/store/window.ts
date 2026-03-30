@@ -3,17 +3,28 @@ import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 
 type WindowConfig = typeof WINDOW_CONFIG;
+type InitialPosition = {
+  top?: number | string;
+  left?: number | string;
+  width?: number | string;
+  height?: number | string;
+};
 type WindowEntry = {
   isOpen: boolean;
   zIndex: number;
   data: unknown;
   isMinimized?: boolean;
   isMaximized?: boolean;
+  initialPosition?: InitialPosition | null;
 };
 type WindowState = {
   windows: WindowConfig;
   nextZIndex: number;
-  openWindow: (windowKey: keyof WindowConfig, data?: unknown) => void;
+  openWindow: (
+    windowKey: keyof WindowConfig,
+    data?: unknown,
+    initialPosition?: InitialPosition,
+  ) => void;
   closeWindow: (windowKey: keyof WindowConfig) => void;
   focusWindow: (windowKey: keyof WindowConfig) => void;
   minimizeWindow: (windowKey: keyof WindowConfig) => void;
@@ -26,17 +37,16 @@ const useWindowStore = create<WindowState>()(
     windows: WINDOW_CONFIG,
     nextZIndex: INITIAL_Z_INDEX + 1,
 
-    openWindow: (windowKey, data = null) =>
+    openWindow: (windowKey, data = null, initialPosition) =>
       set((state) => {
         const window = state.windows[windowKey] as WindowEntry;
         if (!window) return;
-
-        console.log(state.nextZIndex);
 
         window.isOpen = true;
         window.isMinimized = false;
         window.zIndex = state.nextZIndex;
         window.data = data ?? window.data;
+        window.initialPosition = initialPosition ?? null;
         state.nextZIndex++;
       }),
 
@@ -48,6 +58,7 @@ const useWindowStore = create<WindowState>()(
         window.isOpen = false;
         window.zIndex = INITIAL_Z_INDEX;
         window.data = null;
+        window.initialPosition = null;
       }),
 
     focusWindow: (windowKey) =>

@@ -1,22 +1,33 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 import dayjs from "dayjs";
 import Image from "next/image";
 
-import { navIcons, navLinks, WINDOW_CONFIG } from "@/constants";
+import { navIcons, navLinks, WINDOW_CONFIG, locations } from "@/constants";
 import useWindowStore from "@store/window";
+import useLocationStore from "@store/location";
 import useThemeStore from "@store/theme";
 import Spotlight from "@components/Spotlight";
+import { ShinyText, StarBorder } from "@components/react-bits";
 
 const Navbar = () => {
   const { openWindow } = useWindowStore();
+  const { setActiveLocation } = useLocationStore();
   const { toggleTheme, initTheme } = useThemeStore();
+
   const [time, setTime] = useState("");
   const [spotlightOpen, setSpotlightOpen] = useState(false);
+  const [isFirstVisit, setIsFirstVisit] = useState(false);
+  const [userPopoverOpen, setUserPopoverOpen] = useState(false);
+
+  const userPopoverRef = useRef<HTMLDivElement>(null);
+  const userIconRef = useRef<HTMLLIElement>(null);
 
   useEffect(() => {
     initTheme();
+    setIsFirstVisit(localStorage.getItem("theme") === null);
   }, [initTheme]);
 
   useEffect(() => {
@@ -36,6 +47,76 @@ const Navbar = () => {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
+
+  useEffect(() => {
+    if (!userPopoverOpen) return;
+    const handleClick = (e: MouseEvent) => {
+      if (
+        userPopoverRef.current &&
+        !userPopoverRef.current.contains(e.target as Node) &&
+        userIconRef.current &&
+        !userIconRef.current.contains(e.target as Node)
+      ) {
+        setUserPopoverOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, [userPopoverOpen]);
+
+  const gap = 4;
+  const navH = 40;
+  const topOffset = navH + gap;
+
+  const handleSurpriseMe = () => {
+    const aboutMe = locations.about;
+    const aboutTxt = aboutMe.children.find((c) => c.name === "about-me.txt");
+
+    if (aboutTxt) {
+      openWindow("txtfile", aboutTxt, {
+        top: topOffset,
+        left: gap,
+        height: `calc(55% - ${topOffset + gap * 0.5}px)`,
+        width: `calc(35% - ${gap}px)`,
+      });
+    }
+
+    setActiveLocation(aboutMe);
+    openWindow("finder", undefined, {
+      top: `calc(55% + ${gap * 0.5}px)`,
+      left: gap,
+      height: `calc(45% - ${gap * 1.5}px)`,
+      width: "48rem",
+    });
+
+    openWindow("terminal", undefined, {
+      top: topOffset,
+      left: `calc(100% - 48rem - ${gap}px)`,
+      width: "48rem",
+    });
+
+    openWindow("contact", undefined, {
+      top: `calc(50% + ${gap * 0.5}px)`,
+      left: `calc(100% - 36rem - ${gap}px)`,
+      width: "36rem",
+    });
+
+    setIsFirstVisit(false);
+  };
+
+  const getIconClickHandler = (name: string) => {
+    switch (name) {
+      case "Mode":
+        return toggleTheme;
+      case "Search":
+        return () => setSpotlightOpen(true);
+      case "User":
+        return () => setUserPopoverOpen((prev) => !prev);
+      default:
+        return undefined;
+    }
+  };
+
   return (
     <nav>
       <div>
@@ -60,21 +141,32 @@ const Navbar = () => {
         </ul>
       </div>
 
+      {isFirstVisit && (
+        <StarBorder
+          color="#f59e0b"
+          speed="4s"
+          thickness={1.5}
+          className="max-sm:hidden"
+          onClick={handleSurpriseMe}
+        >
+          <ShinyText
+            text="✨ Surprise Me"
+            speed={2.5}
+            className="text-xs font-medium"
+            color="#9ca3af"
+            shineColor="#ffffff"
+          />
+        </StarBorder>
+      )}
+
       <div>
         <ul>
           {navIcons.map(({ id, img, name }) => (
             <li
               key={id}
-              onClick={
-                name === "Mode"
-                  ? toggleTheme
-                  : name === "Search"
-                    ? () => setSpotlightOpen(true)
-                    : undefined
-              }
-              className={
-                name === "Mode" || name === "Search" ? "cursor-pointer" : ""
-              }
+              ref={name === "User" ? userIconRef : undefined}
+              onClick={getIconClickHandler(name)}
+              className="cursor-pointer"
             >
               <Image
                 src={img}
@@ -86,7 +178,6 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
-
         <time suppressHydrationWarning>{time}</time>
       </div>
 
@@ -94,6 +185,26 @@ const Navbar = () => {
         isOpen={spotlightOpen}
         onClose={() => setSpotlightOpen(false)}
       />
+
+      {userPopoverOpen &&
+        createPortal(
+          <div ref={userPopoverRef} id="user-popover">
+            <p>View my introduction?</p>
+            <div className="popover-actions">
+              <button onClick={() => setUserPopoverOpen(false)}>Cancel</button>
+              <button
+                className="confirm"
+                onClick={() => {
+                  setUserPopoverOpen(false);
+                  handleSurpriseMe();
+                }}
+              >
+                Show me
+              </button>
+            </div>
+          </div>,
+          document.body,
+        )}
     </nav>
   );
 };

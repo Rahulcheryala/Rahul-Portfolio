@@ -23,7 +23,8 @@ const WindowWrapper = (
   const WrapperComponent = (props: any) => {
     const { focusWindow, windows } = useWindowStore();
     const windowEntry = windows[windowKey] as WindowEntry;
-    const { isOpen, isMaximized, isMinimized, zIndex, data } = windowEntry;
+    const { isOpen, isMaximized, isMinimized, zIndex, data, initialPosition } =
+      windowEntry;
     const ref = useRef<HTMLDivElement>(null);
     const draggableRef = useRef<DraggableType | null>(null);
     const lastDataRef = useRef<unknown>(undefined);
@@ -77,6 +78,25 @@ const WindowWrapper = (
             ease: "power3.out",
           },
         );
+      } else if (initialPosition) {
+        gsap.set(window, {
+          top: initialPosition.top,
+          left: initialPosition.left,
+          width: initialPosition.width ?? "auto",
+          height: initialPosition.height ?? "auto",
+          x: 0,
+          y: 0,
+        });
+        gsap.fromTo(
+          window,
+          { scale: 0.8, opacity: 0 },
+          {
+            scale: 1,
+            opacity: 1,
+            duration: 0.4,
+            ease: "power3.out",
+          },
+        );
       } else {
         gsap.set(window, {
           clearProps: "width,height",
@@ -93,7 +113,7 @@ const WindowWrapper = (
           },
         );
       }
-    }, [isOpen]);
+    }, [isOpen, initialPosition]);
 
     useGSAP(() => {
       const window = ref.current;
@@ -327,7 +347,10 @@ const WindowWrapper = (
         id={windowKey}
         ref={ref}
         style={{ zIndex, opacity: 0 }}
-        className={clsx("absolute border border-transparent dark:border-gray-700 rounded-xl", !isMaximized && `${windowKey}-window`)}
+        className={clsx(
+          "absolute border border-transparent dark:border-gray-700 rounded-xl",
+          !isMaximized && `${windowKey}-window`,
+        )}
         onMouseDown={() => focusWindow(windowKey)}
       >
         <Component {...props} />
