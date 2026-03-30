@@ -208,7 +208,7 @@ const Calendar = () => {
                           className="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0"
                           style={{ backgroundColor: selectedEntry.color }}
                         />
-                        <p className="text-xs leading-relaxed text-gray-600 dark:text-gray-300">
+                        <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
                           {a}
                         </p>
                       </li>
@@ -229,7 +229,7 @@ const Calendar = () => {
                           className="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0"
                           style={{ backgroundColor: selectedEntry.color }}
                         />
-                        <p className="text-xs leading-relaxed text-gray-600 dark:text-gray-300">
+                        <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
                           {a}
                         </p>
                       </li>

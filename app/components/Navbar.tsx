@@ -69,19 +69,21 @@ const Navbar = () => {
   const topOffset = navH + gap;
 
   const handleSurpriseMe = () => {
-    const aboutMe = locations.about;
-    const aboutTxt = aboutMe.children.find((c) => c.name === "about-me.txt");
+    const projects = locations.work;
+    const aboutTxt = locations.about.children.find(
+      (c) => c.name === "about-me.txt",
+    );
 
     if (aboutTxt) {
       openWindow("txtfile", aboutTxt, {
         top: topOffset,
         left: gap,
-        height: `calc(55% - ${topOffset + gap * 0.5}px)`,
-        width: `calc(35% - ${gap}px)`,
+        height: `calc(70% - ${topOffset + gap * 0.5}px)`,
+        width: "28rem",
       });
     }
 
-    setActiveLocation(aboutMe);
+    setActiveLocation(projects);
     openWindow("finder", undefined, {
       top: `calc(55% + ${gap * 0.5}px)`,
       left: gap,
