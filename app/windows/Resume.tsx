@@ -30,8 +30,8 @@ const Resume = () => {
         <h2>Resume.pdf</h2>
 
         <Link
-          href="files/Rahul_resume_2025.pdf"
-          download="files/Rahul_resume_2025.pdf"
+          href="files/Rahul_resume_2026.pdf"
+          download="files/Rahul_resume_2026.pdf"
           className="cursor-pointer"
           title="Download Resume"
         >
@@ -40,7 +40,7 @@ const Resume = () => {
       </div>
 
       <div className="resume-content">
-        <Document file="files/Rahul_resume_2025.pdf">
+        <Document file="files/Rahul_resume_2026.pdf">
           <Page
             className={`${windows.resume.isMaximized && "shadow-2xl mt-1 border border-gray-200 rounded-xl overflow-hidden"}`}
             pageNumber={1}
