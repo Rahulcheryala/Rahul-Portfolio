@@ -9,6 +9,7 @@ import {
   ImgFile,
   Contact,
   Photos,
+  Calendar,
 } from "@windows";
 
 const App = () => {
@@ -28,6 +29,7 @@ const App = () => {
         <ImgFile />
         <ConditionalResume />
         <Contact />
+        <Calendar />
       </main>
     </LoadingScreen>
   );

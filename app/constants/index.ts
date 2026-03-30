@@ -71,6 +71,12 @@ const dockApps = [
     canOpen: true,
   },
   {
+    id: "calendar",
+    name: "Experience",
+    icon: "calendar.png",
+    canOpen: true,
+  },
+  {
     id: "trash",
     name: "Archive", // was "Trash"
     icon: "trash.png",
@@ -194,6 +200,108 @@ const gallery = [
   },
 ];
 
+const careerTimeline = [
+  {
+    id: 1,
+    year: "2024",
+    title: "Full-stack Developer",
+    company: "Quantlytix Pvt Ltd",
+    type: "fulltime",
+    duration: "Aug 2024 — Present",
+    location: "Remote",
+    color: "#0058bc",
+    clients: [
+      {
+        name: "IPSY",
+        achievements: [
+          "Migrated legacy HTML/CSS to React.js for an internal platform, maintaining 100% feature parity with zero disruption.",
+          "Streamlined internal workflows and redesigned UIs, improving task completion efficiency by 35%.",
+          "Developed automated E2E test suites using WebdriverIO integrated into Jenkins CI pipelines.",
+        ],
+      },
+      {
+        name: "Vethuk",
+        achievements: [
+          "Architected CI/CD pipelines using GitHub Actions, reducing manual intervention by 80%.",
+          "Built observability stack with AWS, Grafana, Loki, FluentBit, and InfluxDB + Telegraf.",
+          "Designed containerized deployments using AWS ECS and ECR across multiple environments.",
+          "Led end-to-end development of the company's public-facing platform using Next.js and Django.",
+        ],
+      },
+    ],
+    techStack: [
+      "React.js",
+      "Next.js",
+      "Django",
+      "AWS",
+      "Docker",
+      "Jenkins",
+      "GitHub Actions",
+      "Grafana",
+    ],
+  },
+  {
+    id: 2,
+    year: "2024",
+    title: "Full-stack Developer Intern",
+    company: "CodeUnity Technologies",
+    type: "intern",
+    duration: "Feb 2024 — Aug 2024",
+    location: "Remote",
+    color: "#006b27",
+    achievements: [
+      "Refactored backend services to eliminate code redundancy within a multi-tenant SaaS ERP system.",
+      "Designed multi-tenant ERP modules modeling organizational hierarchies for scalable resource planning.",
+      "Built a reusable frontend component library, reducing delivery time by 25%.",
+      "Documented component architecture and integration workflows for developer onboarding.",
+    ],
+    techStack: ["React.js", "Node.js", "PostgreSQL", "TypeScript"],
+  },
+  {
+    id: 3,
+    year: "2023",
+    title: "Software Engineer Intern",
+    company: "Azgaurd Technologies",
+    type: "intern",
+    duration: "Aug 2023 — Jan 2024",
+    location: "Remote",
+    color: "#f97316",
+    achievements: [
+      "Engineered Chrome extensions to automate job application workflows, reducing manual effort by 3.5x.",
+      "Built a high-performance job portal frontend using Next.js and Tailwind CSS.",
+      "Developed Django backend integrated with AWS S3 and deployed on EC2 with optimized utilization.",
+      "Utilized Terraform for IaC deployment, reducing deployment time by 60%.",
+    ],
+    techStack: [
+      "Next.js",
+      "Django",
+      "AWS S3",
+      "EC2",
+      "Terraform",
+      "Tailwind CSS",
+    ],
+  },
+  {
+    id: 4,
+    year: "2021",
+    title: "Bachelor of Technology",
+    company: "IIT Dharwad",
+    type: "education",
+    duration: "2021 — 2025",
+    location: "Dharwad, India",
+    color: "#8b5cf6",
+    achievements: ["Computer Science & Engineering", "CPI: 7.6"],
+    techStack: [],
+  },
+];
+
+const careerCategories = [
+  { id: "all", label: "Overview", icon: "📋" },
+  { id: "fulltime", label: "Full-time Roles", icon: "💼" },
+  { id: "intern", label: "Internships", icon: "🎓" },
+  { id: "education", label: "Education", icon: "🏛️" },
+];
+
 export {
   navLinks,
   navIcons,
@@ -203,12 +311,14 @@ export {
   socials,
   photosLinks,
   gallery,
+  careerTimeline,
+  careerCategories,
 };
 
 const WORK_LOCATION = {
   id: 1,
   type: "work",
-  name: "Work",
+  name: "Projects",
   icon: "/icons/work.svg",
   kind: "folder",
   children: [
@@ -317,59 +427,6 @@ const WORK_LOCATION = {
         },
       ],
     },
-
-    // ▶ Project 3
-    // {
-    //   id: 7,
-    //   name: "Food Delivery App",
-    //   icon: "/images/folder.png",
-    //   kind: "folder",
-    //   position: "top-10 left-80",
-    //   windowPosition: "top-[30vh] left-9",
-    //   children: [
-    //     {
-    //       id: 1,
-    //       name: "Food Delivery App Project.txt",
-    //       icon: "/images/txt.png",
-    //       kind: "file",
-    //       fileType: "txt",
-    //       position: "top-5 left-10",
-    //       description: [
-    //         "Our Food Delivery App is a fast and convenient way to order meals from your favorite restaurants.",
-    //         "Instead of making calls or waiting in line, you can browse menus, customize orders, and track deliveries in real time.",
-    //         "Think of it like having your favorite restaurants in your pocket—ready to deliver anytime, anywhere.",
-    //         "It’s built with React Native, so it works smoothly on both iOS and Android with a clean, modern design.",
-    //       ],
-    //     },
-    //     {
-    //       id: 2,
-    //       name: "food-delivery-app.com",
-    //       icon: "/images/safari.png",
-    //       kind: "file",
-    //       fileType: "url",
-    //       href: "https://youtu.be/LKrX390fJMw?si=cExkuVhf2DTV9G2-",
-    //       position: "top-10 right-20",
-    //     },
-    //     {
-    //       id: 4,
-    //       name: "food-delivery-app.png",
-    //       icon: "/images/image.png",
-    //       kind: "file",
-    //       fileType: "img",
-    //       position: "top-52 right-80",
-    //       imageUrl: "/images/project-3.png",
-    //     },
-    //     {
-    //       id: 5,
-    //       name: "Design.fig",
-    //       icon: "/images/plain.png",
-    //       kind: "file",
-    //       fileType: "fig",
-    //       href: "https://google.com",
-    //       position: "top-60 right-20",
-    //     },
-    //   ],
-    // },
   ],
 };
 
@@ -473,7 +530,37 @@ const TRASH_LOCATION = {
   ],
 };
 
+const EXPERIENCE_POSITIONS = [
+  "top-5 left-10",
+  "top-10 right-20",
+  "top-52 left-5",
+  "top-56 right-60",
+];
+
+const EXPERIENCE_LOCATION = {
+  id: 100,
+  type: "experience",
+  name: "Work Exp",
+  icon: "/icons/work.svg",
+  kind: "folder",
+  children: careerTimeline.map((entry, i) => ({
+    id: 100 + entry.id,
+    name: `${entry.company}.txt`,
+    icon: "/images/txt.png",
+    kind: "file",
+    fileType: "experience",
+    position: EXPERIENCE_POSITIONS[i % EXPERIENCE_POSITIONS.length],
+    calendarEntryId: entry.id,
+    subtitle: entry.title,
+    description:
+      "clients" in entry && entry.clients
+        ? entry.clients.flatMap((c) => [`Client: ${c.name}`, ...c.achievements])
+        : (entry.achievements ?? []),
+  })),
+};
+
 export const locations = {
+  experience: EXPERIENCE_LOCATION,
   work: WORK_LOCATION,
   about: ABOUT_LOCATION,
   resume: RESUME_LOCATION,
@@ -527,6 +614,13 @@ const WINDOW_CONFIG = {
     data: null,
   },
   imgfile: {
+    isOpen: false,
+    isMaximized: false,
+    isMinimized: false,
+    zIndex: INITIAL_Z_INDEX,
+    data: null,
+  },
+  calendar: {
     isOpen: false,
     isMaximized: false,
     isMinimized: false,

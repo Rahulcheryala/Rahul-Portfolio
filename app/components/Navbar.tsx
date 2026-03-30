@@ -89,16 +89,25 @@ const Navbar = () => {
       width: "48rem",
     });
 
+    // Top right: Terminal
     openWindow("terminal", undefined, {
       top: topOffset,
       left: `calc(100% - 48rem - ${gap}px)`,
       width: "48rem",
     });
 
+    // Bottom right: Contact
     openWindow("contact", undefined, {
-      top: `calc(50% + ${gap * 0.5}px)`,
-      left: `calc(100% - 36rem - ${gap}px)`,
-      width: "36rem",
+      top: `calc(50% - ${gap * 8.5}px)`,
+      left: `calc(100% - 56rem - ${gap}px)`,
+      width: "56rem",
+    });
+
+    // Center: Calendar (main attraction)
+    openWindow("calendar", undefined, {
+      top: `calc(${topOffset} + 1rem)`,
+      left: `calc(50% - 36rem)`,
+      width: "72rem",
     });
 
     setIsFirstVisit(false);

@@ -12,7 +12,7 @@ type LocationState = {
   resetActiveLocation: () => void;
 };
 
-const DEFAULT_LOCATION: Location = locations.work;
+const DEFAULT_LOCATION: Location = locations.experience;
 
 const useLocationStore = create<LocationState>()(
   immer((set) => ({

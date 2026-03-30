@@ -312,7 +312,6 @@ body {
 
     .sidebar {
       @apply flex-none bg-gray-50 dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col p-5;
-      /* min-width: 96px; */
 
       h2 {
         @apply text-xs font-medium text-gray-400 mb-1;
@@ -524,6 +523,85 @@ body {
 
     .spotlight-empty {
       @apply px-5 py-6 text-center text-sm text-gray-500 dark:text-gray-400;
+    }
+  }
+
+  #calendar {
+    @apply absolute w-7xl top-20 left-20 bg-white dark:bg-gray-900 shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+
+    .calendar-body {
+      @apply flex w-full h-[calc(100%-45px)];
+    }
+
+    .calendar-sidebar {
+      @apply w-52 bg-gray-50 dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col p-4 shrink-0;
+    }
+
+    .calendar-timeline {
+      @apply flex-1 flex flex-col bg-white dark:bg-gray-900 overflow-hidden;
+
+      .timeline-scroll {
+        @apply flex-1 overflow-y-auto scrollbar-hide relative py-5 px-6;
+      }
+
+      .timeline-line {
+        @apply absolute left-1/2 top-0 bottom-0 w-0.5 -translate-x-1/2;
+        background: linear-gradient(
+          to bottom,
+          #0058bc,
+          #006b27,
+          #f97316,
+          #8b5cf6
+        );
+        opacity: 0.2;
+      }
+
+      .timeline-entry {
+        @apply flex items-center w-full cursor-pointer;
+
+        &.left {
+          .timeline-year {
+            @apply w-1/2 pr-8 text-right;
+          }
+          .timeline-card {
+            @apply border-l-4;
+          }
+          .timeline-card-wrapper {
+            @apply w-1/2 pl-8;
+          }
+        }
+
+        &.right {
+          .timeline-year {
+            @apply w-1/2 pl-8 order-3;
+          }
+          .timeline-dot {
+            @apply order-2;
+          }
+          .timeline-card-wrapper {
+            @apply w-1/2 pr-8 text-right order-1;
+          }
+          .timeline-card {
+            @apply border-r-4;
+          }
+        }
+
+        &.selected .timeline-card {
+          @apply ring-2;
+        }
+      }
+
+      .timeline-dot {
+        @apply relative z-10 w-3.5 h-3.5 rounded-full ring-4 ring-white dark:ring-gray-900 shadow-sm shrink-0;
+      }
+
+      .timeline-card {
+        @apply bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-4 rounded-xl shadow-sm hover:shadow-md transition-all;
+      }
+    }
+
+    .calendar-detail {
+      @apply w-96 bg-gray-50 dark:bg-gray-800 border-l border-gray-200 dark:border-gray-700 p-5 overflow-y-auto scrollbar-hide shrink-0 space-y-5;
     }
   }
 

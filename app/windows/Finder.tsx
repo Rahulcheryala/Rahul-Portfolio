@@ -42,6 +42,9 @@ const Finder = () => {
 
   const openItem = (item: any) => {
     if (item.fileType === "pdf") return openWindow("resume");
+    if (item.fileType === "experience") {
+      return openWindow("calendar", { selectedEntryId: item.calendarEntryId });
+    }
     if (item.kind === "folder") return setActiveLocation(item);
     if (["fig", "url"].includes(item.fileType) && item.href)
       return window.open(item.href, "_blank");
@@ -67,7 +70,7 @@ const Finder = () => {
         <div className="sidebar select-none">
           {renderList("Favorites", Object.values(locations))}
 
-          {renderList("Work", locations.work.children)}
+          {renderList("Projects", locations.work.children)}
         </div>
 
         <ul className="content">
