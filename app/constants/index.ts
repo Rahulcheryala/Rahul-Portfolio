@@ -302,6 +302,56 @@ const careerCategories = [
   { id: "education", label: "Education", icon: "🏛️" },
 ];
 
+const NOTIFICATION_MESSAGES = {
+  easterEgg: [
+    "Try typing `sudo` in the terminal 👀 You might get root access to my... jokes.",
+    "Run `party` in the terminal 🎉 Trust me on this one.",
+    "Use Cmd/Ctrl + K to open Spotlight and jump across apps fast ⚡",
+    "Try the `joke` command in the terminal 😄 You won't regret it.",
+  ],
+  hiddenFeature: [
+    "Double-click any window header to maximize or restore it 🖥️",
+    "Drag windows by their title bar to create your own workspace layout 🧩",
+    "Use the dock icons to instantly restore minimized windows 📌",
+    "Try tab completion in the terminal — it works just like a real shell 🔤",
+    "Press Ctrl+L in the terminal to clear the screen instantly 🧹",
+  ],
+  feature: [
+    "Toggle dark mode from the menu bar to switch the full UI theme 🌙",
+    "Open Calendar to explore my timeline in an interactive way 📅",
+    "Use Finder to navigate projects, resume, and media like a desktop OS 📂",
+    "Click the bell icon in the menu bar to open the notification center 🔔",
+    "Type `sumfetch` in the terminal for a quick summary card about me 📇",
+  ],
+} as const;
+
+const NOTIFICATION_TIP_SECTIONS = [
+  {
+    id: "easter-egg",
+    messageKey: "easterEgg",
+    badge: "Easter Egg",
+    title: "Terminal Magic",
+    tone: "warning",
+    icon: "sparkles",
+  },
+  {
+    id: "hidden-feature",
+    messageKey: "hiddenFeature",
+    badge: "Hidden Feature",
+    title: "Surprise",
+    tone: "purple",
+    icon: "eye",
+  },
+  {
+    id: "feature-tip",
+    messageKey: "feature",
+    badge: "Feature Tip",
+    title: "Quick Tip",
+    tone: "neutral",
+    icon: "lightbulb",
+  },
+] as const;
+
 export {
   navLinks,
   navIcons,
@@ -313,6 +363,8 @@ export {
   gallery,
   careerTimeline,
   careerCategories,
+  NOTIFICATION_MESSAGES,
+  NOTIFICATION_TIP_SECTIONS,
 };
 
 const WORK_LOCATION = {

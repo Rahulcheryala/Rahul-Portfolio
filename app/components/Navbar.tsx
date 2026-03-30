@@ -10,6 +10,7 @@ import useWindowStore from "@store/window";
 import useLocationStore from "@store/location";
 import useThemeStore from "@store/theme";
 import Spotlight from "@components/Spotlight";
+import NotificationCenter from "@components/NotificationCenter";
 import { ShinyText, StarBorder } from "@components/react-bits";
 
 const Navbar = () => {
@@ -19,6 +20,7 @@ const Navbar = () => {
 
   const [time, setTime] = useState("");
   const [spotlightOpen, setSpotlightOpen] = useState(false);
+  const [notificationOpen, setNotificationOpen] = useState(false);
   const [isFirstVisit, setIsFirstVisit] = useState(false);
   const [userPopoverOpen, setUserPopoverOpen] = useState(false);
 
@@ -189,12 +191,22 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
-        <time suppressHydrationWarning>{time}</time>
+        <button
+          type="button"
+          onClick={() => setNotificationOpen((prev) => !prev)}
+          className="cursor-pointer rounded-md px-2 py-1 text-sm font-medium text-black dark:text-gray-200"
+        >
+          <time suppressHydrationWarning>{time}</time>
+        </button>
       </div>
 
       <Spotlight
         isOpen={spotlightOpen}
         onClose={() => setSpotlightOpen(false)}
+      />
+      <NotificationCenter
+        isOpen={notificationOpen}
+        onClose={() => setNotificationOpen(false)}
       />
 
       {userPopoverOpen &&
