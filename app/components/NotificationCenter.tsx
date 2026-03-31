@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 import clsx from "clsx";
 import { NOTIFICATION_MESSAGES, NOTIFICATION_TIP_SECTIONS } from "@constants";
 import { Bell, Dice5, Eye, Lightbulb, MapPin, Sparkles, X } from "lucide-react";
+import Image from "next/image";
 
 type NotificationCenterProps = {
   isOpen: boolean;
@@ -116,7 +117,11 @@ const NotificationCenter = ({ isOpen, onClose }: NotificationCenterProps) => {
             </p>
             <div className="notification-map">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/map-placeholder.png" alt="Map location" />
+              <Image
+                src="/images/map-placeholder.png"
+                alt="Map location"
+                fill
+              />
               <div className="notification-map-pin">
                 <div className="w-3 h-3 bg-blue-500 rounded-full animate-ping absolute" />
                 <div className="w-3 h-3 bg-blue-500 rounded-full border-2 border-white dark:border-gray-800 relative z-10 shadow-lg" />
