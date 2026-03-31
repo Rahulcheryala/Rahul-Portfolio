@@ -27,7 +27,7 @@ const LoadingScreen = ({ children }: { children: ReactNode }) => {
     const timer = setTimeout(() => {
       minTimePassed = true;
       tryFadeOut();
-    }, 1500);
+    }, 800);
 
     const onLoad = () => {
       pageLoaded = true;

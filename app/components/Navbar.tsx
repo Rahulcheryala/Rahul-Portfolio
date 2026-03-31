@@ -136,8 +136,9 @@ const Navbar = () => {
         <Image
           src="/images/logo.svg"
           width={14}
-          height={14}
+          height={17}
           alt="logo"
+          priority
           className="mb-0.5 dark:invert"
         />
         <p className="font-bold dark:text-gray-200">Rahul&apos;s Portfolio</p>
@@ -187,6 +188,7 @@ const Navbar = () => {
                 alt={`${name}-icon`}
                 width={16}
                 height={16}
+                priority
               />
             </li>
           ))}

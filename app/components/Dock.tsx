@@ -107,7 +107,7 @@ const Dock = () => {
                 alt={app.name}
                 width={56}
                 height={56}
-                unoptimized
+                sizes="56px"
                 className={`object-cover object-center ${app.canOpen ? "cursor-pointer" : "cursor-default opacity-60"}`}
               />
               {windows[app.id as keyof typeof windows]?.isOpen && (

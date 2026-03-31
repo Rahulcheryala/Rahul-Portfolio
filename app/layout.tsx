@@ -7,17 +7,20 @@ import "./globals.css";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const georama = Georama({
   variable: "--font-georama",
   subsets: ["latin"],
   style: ["normal", "italic"],
+  display: "swap",
 });
 
 const robotoMono = Roboto_Mono({

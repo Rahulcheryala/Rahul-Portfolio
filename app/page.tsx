@@ -1,16 +1,18 @@
+import dynamic from "next/dynamic";
 import { Dock, Navbar, Welcome, Home } from "@components";
-import ConditionalResume from "@components/ConditionalResume";
 import LoadingScreen from "@components/LoadingScreen";
-import {
-  Terminal,
-  Safari,
-  Finder,
-  TxtFile,
-  ImgFile,
-  Contact,
-  Photos,
-  Calendar,
-} from "@windows";
+
+const Finder = dynamic(() => import("@windows/Finder"));
+const Safari = dynamic(() => import("@windows/Safari"));
+const Photos = dynamic(() => import("@windows/Photos"));
+const Terminal = dynamic(() => import("@windows/Terminal"));
+const TxtFile = dynamic(() => import("@windows/TxtFile"));
+const ImgFile = dynamic(() => import("@windows/ImgFile"));
+const Contact = dynamic(() => import("@windows/Contact"));
+const Calendar = dynamic(() => import("@windows/Calendar"));
+const ConditionalResume = dynamic(
+  () => import("@components/ConditionalResume"),
+);
 
 const App = () => {
   return (

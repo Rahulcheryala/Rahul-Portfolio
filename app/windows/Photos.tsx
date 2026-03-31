@@ -94,10 +94,10 @@ const Photos = () => {
                 <Image
                   src={img}
                   alt={`Gallery image ${id}`}
-                  width={0}
-                  height={0}
+                  width={415}
+                  height={231}
+                  sizes="(max-width: 768px) 100vw, 415px"
                   className="object-fit rounded-lg border dark:border-gray-700 border-transparent"
-                  unoptimized
                 />
               </li>
             ))}

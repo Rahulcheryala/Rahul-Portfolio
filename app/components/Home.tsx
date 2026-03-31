@@ -38,9 +38,9 @@ const Home = () => {
             <Image
               src="/images/folder.png"
               alt={project.name}
-              height={0}
-              width={0}
-              sizes="100%"
+              height={65}
+              width={69}
+              sizes="69px"
               className="w-full h-full object-cover"
             />
             <p className="max-w-32 line-clamp-2 break-after-all">
